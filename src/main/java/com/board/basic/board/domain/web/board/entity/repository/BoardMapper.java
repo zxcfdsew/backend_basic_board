@@ -7,5 +7,5 @@ import com.board.basic.board.domain.web.board.entity.Board;
 
 @Mapper
 public interface BoardMapper {
-
+    int write(Board board);
 }
