@@ -10,4 +10,13 @@
         values
             (default, #{title}, #{content}, #{writerName})
     </insert>
+    <select id="getBoardList" resultType="com.board.basic.board.domain.web.board.entity.Board">
+        select
+            id,
+            title,
+            content,
+            writer_name as writerName
+        from
+            board
+    </select>
 </mapper>

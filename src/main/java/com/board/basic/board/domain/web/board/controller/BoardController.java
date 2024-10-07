@@ -1,12 +1,16 @@
 package com.board.basic.board.domain.web.board.controller;
 
 import com.board.basic.board.domain.web.board.dto.req.BoardWriteRequestDto;
+import com.board.basic.board.domain.web.board.dto.resp.BoardResponseDto;
 import com.board.basic.board.domain.web.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class BoardController {
@@ -15,7 +19,10 @@ public class BoardController {
     private BoardService boardService;
 
 	// 게시판 목록 조회
-
+    @GetMapping("/board/list")
+    public ResponseEntity<?> getBoardList() {
+        return ResponseEntity.ok().body(boardService.getBoardList());
+    }
 	// 게시판 상세 조회
 
 	// 게시판 등록

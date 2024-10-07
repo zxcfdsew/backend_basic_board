@@ -5,7 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.board.basic.board.domain.web.board.entity.Board;
 
+import java.util.List;
+
 @Mapper
 public interface BoardMapper {
     int write(Board board);
+    List<Board> getBoardList();
 }
