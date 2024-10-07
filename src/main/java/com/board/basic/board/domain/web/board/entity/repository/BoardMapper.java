@@ -11,4 +11,5 @@ import java.util.List;
 public interface BoardMapper {
     int write(Board board);
     List<Board> getBoardList();
+    Board getBoard(Long id);
 }

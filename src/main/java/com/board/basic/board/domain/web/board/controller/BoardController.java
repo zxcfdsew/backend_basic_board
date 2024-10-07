@@ -4,13 +4,9 @@ import com.board.basic.board.domain.web.board.dto.req.BoardWriteRequestDto;
 import com.board.basic.board.domain.web.board.dto.resp.BoardResponseDto;
 import com.board.basic.board.domain.web.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BoardController {
@@ -24,6 +20,14 @@ public class BoardController {
         return ResponseEntity.ok().body(boardService.getBoardList());
     }
 	// 게시판 상세 조회
+    @GetMapping("/board/{id}")
+    public ResponseEntity<?> getBoard(@PathVariable Long id) {
+        BoardResponseDto dto = boardService.getBoard(id);
+        if (dto == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("해당 게시글이 존재하지 않습니다.");
+        }
+        return ResponseEntity.ok().body(dto);
+    }
 
 	// 게시판 등록
     @PostMapping("/board")
