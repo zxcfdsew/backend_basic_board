@@ -1,21 +1,18 @@
 package com.board.basic.board.domain.web.user.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import lombok.Builder;
+import lombok.Data;
 
-@Entity
-@Table(name = "user")
+@Data
+@Builder
 public class User {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
 	// 사용자 아이디
+	private String userId;
 	// 사용자 비밀번호
+	private String password;
 	// 사용자 이름
+	private String name;
 	// 사용자 이메일
+	private String email;
 }

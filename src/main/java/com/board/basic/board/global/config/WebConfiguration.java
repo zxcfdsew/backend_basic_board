@@ -25,7 +25,8 @@ public class WebConfiguration {
 					.requestMatchers(
 						AntPathRequestMatcher.antMatcher("/swagger-ui/**/**"),
 						AntPathRequestMatcher.antMatcher("/basic/**"),
-						AntPathRequestMatcher.antMatcher("/v3/api-docs/**/**")
+						AntPathRequestMatcher.antMatcher("/v3/api-docs/**/**"),
+						AntPathRequestMatcher.antMatcher("/h2-console/**")
 					).permitAll()
 			)
 			.headers(
