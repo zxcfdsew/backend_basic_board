@@ -1,6 +1,6 @@
 package com.board.basic.board.domain.web.board.controller;
 
-import com.board.basic.board.domain.web.board.dto.req.BoardWriteRequestDto;
+import com.board.basic.board.domain.web.board.dto.req.BoardRequestDto;
 import com.board.basic.board.domain.web.board.dto.resp.BoardResponseDto;
 import com.board.basic.board.domain.web.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +19,7 @@ public class BoardController {
     public ResponseEntity<?> getBoardList() {
         return ResponseEntity.ok().body(boardService.getBoardList());
     }
+
 	// 게시판 상세 조회
     @GetMapping("/board/{id}")
     public ResponseEntity<?> getBoard(@PathVariable Long id) {
@@ -31,14 +32,23 @@ public class BoardController {
 
 	// 게시판 등록
     @PostMapping("/board")
-    public ResponseEntity<?> writeBoard(@RequestBody BoardWriteRequestDto dto) {
+    public ResponseEntity<?> writeBoard(@RequestBody BoardRequestDto dto) {
         int result = boardService.writeBoard(dto);
         if (result == 0) {
             return ResponseEntity.badRequest().body("등록 실패");
         }
         return ResponseEntity.ok().body("등록 성공");
     }
+    
 	// 게시판 수정
+    @PutMapping("/board/{id}")
+    public ResponseEntity<?> modifyBoard(@PathVariable Long id, @RequestBody BoardRequestDto dto) {
+        int result = boardService.modifyBoard(id, dto);
+        if (result == 0) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("해당 게시글이 존재하지 않습니다.");
+        }
+        return ResponseEntity.ok().body("수정 성공");
+    }
 
 	// 게시판 삭제
 

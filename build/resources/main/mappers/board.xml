@@ -30,4 +30,14 @@
         where
             id = #{id}
     </select>
+    <update id="modifyBoard">
+        update
+            board
+        set
+            title = #{title},
+            content = #{content},
+            writer_name = #{writerName}
+        where
+            id = #{id}
+    </update>
 </mapper>
