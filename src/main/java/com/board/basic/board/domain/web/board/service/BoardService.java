@@ -50,4 +50,7 @@ public class BoardService {
     }
 
 	// 게시판 삭제
+    public int deleteBoard(Long id) {
+        return boardMapper.deleteBoard(id);
+    }
 }

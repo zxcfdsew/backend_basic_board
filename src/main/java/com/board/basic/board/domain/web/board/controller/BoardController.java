@@ -51,6 +51,12 @@ public class BoardController {
     }
 
 	// 게시판 삭제
-
-
+    @DeleteMapping("/board/{id}")
+    public ResponseEntity<?> deleteBoard(@PathVariable Long id) {
+        int result = boardService.deleteBoard(id);
+        if (result == 0) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("해당 게시글이 존재하지 않습니다.");
+        }
+        return ResponseEntity.ok().body("삭제 성공");
+    }
 }

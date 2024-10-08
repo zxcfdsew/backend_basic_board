@@ -13,4 +13,5 @@ public interface BoardMapper {
     List<Board> getBoardList();
     Board getBoard(Long id);
     int modifyBoard(Board board);
+    int deleteBoard(Long id);
 }
